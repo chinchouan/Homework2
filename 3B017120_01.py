@@ -26,13 +26,13 @@ def get_odd_squares(num_list: list) -> list:
     return result
 
 
-def get_sliced_list(num_list:list) -> list:
+def get_sliced_list(num_list: list) -> list:
     """
     This function takes a list of numbers and returns a list .
         :param num_list: list of numbers
         :return result: list of slicing list
     """
-    result:list = num_list[4::]
+    result: list = num_list[4::]
     return result
 
 
@@ -50,11 +50,15 @@ def format_numbers(numbers: list) -> list:
 
 # main programming
 if __name__ == '__main__':
-    num_list:list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    num_list: list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     # List of data
-    data:list = [get_even_squares(num_list), get_odd_squares(num_list), get_sliced_list(num_list)]
+    data: list = [
+        get_even_squares(num_list),
+        get_odd_squares(num_list),
+        get_sliced_list(num_list),
+    ]
     # Format list of data
-    format_data:list = []
+    format_data: list = []
     for d in data:
         format_data.append(format_numbers(d))
     # Join to a string
