@@ -38,7 +38,8 @@ def get_sliced_list(num_list: list) -> list:
 
 def format_numbers(numbers: list) -> list:
     """
-    This function takes a list of numbers and returns a list of formatted numbers.
+    This function takes a list of numbers and returns a list of
+    formatted numbers.
         :param numbers: list of numbers
         :return: formatted list of numbers
     """

@@ -4,7 +4,8 @@ import os
 
 def get_student_info(data, student_id) -> dict:
     """
-    This function takes a dict of student info and returns a dict of student id info
+    This function takes a dict of student info and returns a dict
+    of student id info
     :param data: dict of student info
     :param student_id: student id
     :return: dict of student id info
@@ -110,7 +111,9 @@ if __name__ == '__main__':
             try:
                 sid = input("請輸入學號: ")
                 this_student_info = get_student_info(JSONFILE, sid)
-                print(f"=>各科平均分數: {calculate_average_score(this_student_info):.2f}")
+                msg = "=>各科平均分數: "
+                msg = msg + f"{calculate_average_score(this_student_info):.2f}"
+                print(msg)
             except ValueError as ve:
                 print(ve)
         elif choice == '4':
@@ -119,5 +122,3 @@ if __name__ == '__main__':
             continue
         else:
             print("請選擇1.到4.，輸入如:1。")
-
-
