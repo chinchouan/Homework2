@@ -31,20 +31,16 @@ def add_course(student_id, course_name, course_score) -> str:
     :param course_score: course score
     :return: add result success or fail
     """
-    student_data = get_student_info(JSONFILE, student_id)
+    get_student_info(JSONFILE, student_id)
     if course_name == "" or course_score == "":
         raise ValueError("=>其它例外: 課程名稱或分數不可空白.")
     else:
-
-        student_data['courses'].append(
-            {"name": course_name, "score": course_score}
-        )
         with open(JSONFILE, 'r', encoding='utf-8') as f:
             data_dict = json.load(f)
             for d in data_dict:
                 if d['student_id'] == student_id:
                     d['courses'].append(
-                        {'name': course_name, 'score': course_score}
+                        {'name': course_name, 'score': float(course_score)}
                     )
         with open(JSONFILE, 'w', encoding='utf-8') as f:
             json.dump(data_dict, f, ensure_ascii=False, indent=4)
