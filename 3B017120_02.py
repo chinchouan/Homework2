@@ -21,7 +21,24 @@ def get_student_info(data, student_id) -> dict:
 
 
 def add_course(student_id, course_name, course_score):
-    pass
+    student_data = get_student_info(JSONFILE, student_id)
+    if course_name == "" or course_score == "":
+        raise ValueError("=>其它例外: 課程名稱或分數不可空白.")
+    else:
+
+        student_data['courses'].append(
+            {"name": course_name, "score": course_score}
+        )
+        with open(JSONFILE, 'r', encoding='utf-8') as f:
+            odata = json.load(f)
+            for o in odata:
+                if o['student_id'] == student_id:
+                    o['courses'].append(
+                        {'name': course_name, 'score': course_score}
+                    )
+        with open(JSONFILE, 'w', encoding='utf-8') as f:
+            json.dump(odata, f, ensure_ascii=False, indent=4)
+    return "=>課程已成功新增。"
 
 
 menu = """
@@ -52,7 +69,16 @@ if __name__ == '__main__':
             except ValueError as ve:
                 print(ve)
         elif choice == '2':
-            pass
+            try:
+                if data_exists:
+                    sid = input("請輸入學號: ")
+                    cname = input("請輸入要新增課程的名稱: ")
+                    cscore = input("請輸入要新增課程的分數: ")
+                    print(add_course(sid, cname, cscore))
+                else:
+                    print("檔案：students.json不存在")
+            except ValueError as ve:
+                print(ve)
         elif choice == '3':
             pass
         elif choice == '4':
