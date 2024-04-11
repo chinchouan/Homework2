@@ -16,7 +16,7 @@ def get_odd_squares(num_list: list) -> list:
     """
     This function takes a list of numbers and returns a list of odd numbers.
         :param num_list: list of numbers
-        :return result: list of odd numbers
+        :return: list of odd numbers
     """
 
     result: list = []
@@ -30,7 +30,7 @@ def get_sliced_list(num_list: list) -> list:
     """
     This function takes a list of numbers and returns a list .
         :param num_list: list of numbers
-        :return result: list of slicing list
+        :return: list of slicing list
     """
     result: list = num_list[4::]
     return result
@@ -40,7 +40,7 @@ def format_numbers(numbers: list) -> list:
     """
     This function takes a list of numbers and returns a list of formatted numbers.
         :param numbers: list of numbers
-        :return result: formatted list of numbers
+        :return: formatted list of numbers
     """
     result: list = []
     for num in numbers:
