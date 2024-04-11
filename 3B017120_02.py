@@ -1,6 +1,7 @@
 import json
 import os
 
+
 def get_student_info(data, student_id) -> dict:
     """
     This function takes a dict of student info and returns a dict of student id info
@@ -41,7 +42,11 @@ if __name__ == '__main__':
             try:
                 if data_exists:
                     sid = input("請輸入學號: ")
-                    get_student_info(JSONFILE, sid)
+                    datas = get_student_info(JSONFILE, sid)
+                    format_datas = json.dumps(
+                        datas, indent=4, ensure_ascii=False
+                    )
+                    print(f"=>學生資料: {format_datas}")
                 else:
                     print("檔案：students.json不存在")
             except ValueError as ve:
