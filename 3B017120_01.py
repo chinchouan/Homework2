@@ -68,6 +68,6 @@ if __name__ == '__main__':
     for d in data:
         format_data.append(format_numbers(d))
     # Join to a string
-    for fd in format_data:
-        str1 = ','.join(fd)
-        print(str1)
+    format_list: list = [','.join(fd) for fd in format_data]
+    for fl in format_list:
+        print(fl)
