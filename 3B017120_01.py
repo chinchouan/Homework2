@@ -1,8 +1,8 @@
 def get_even_squares(num_list: list) -> list:
     """
-    This function takes a list of numbers and returns a list of even numbers.
+    This function takes a list of numbers and returns a list of even numbers square.
         :param num_list: list of numbers
-        :return result: list of even numbers
+        :return result: list of even numbers square
     """
 
     result: list = []
@@ -12,11 +12,11 @@ def get_even_squares(num_list: list) -> list:
     return result
 
 
-def get_odd_squares(num_list: list) -> list:
+def get_odd_cubes(num_list: list) -> list:
     """
-    This function takes a list of numbers and returns a list of odd numbers.
+    This function takes a list of numbers and returns a list of odd numbers cubes.
         :param num_list: list of numbers
-        :return: list of odd numbers
+        :return: list of odd numbers cubes
     """
 
     result: list = []
@@ -28,10 +28,11 @@ def get_odd_squares(num_list: list) -> list:
 
 def get_sliced_list(num_list: list) -> list:
     """
-    This function takes a list of numbers and returns a list .
+    This function takes a list of numbers and returns a sliced list .
         :param num_list: list of numbers
-        :return: list of slicing list
+        :return: list of sliced numbers list
     """
+
     result: list = num_list[4::]
     return result
 
@@ -43,6 +44,7 @@ def format_numbers(numbers: list) -> list:
         :param numbers: list of numbers
         :return: formatted list of numbers
     """
+
     result: list = []
     for num in numbers:
         result.append(f'{num:8d}')
@@ -55,7 +57,7 @@ if __name__ == '__main__':
     # List of data
     data: list = [
         get_even_squares(num_list),
-        get_odd_squares(num_list),
+        get_odd_cubes(num_list),
         get_sliced_list(num_list),
     ]
     # Format list of data
