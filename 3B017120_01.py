@@ -67,7 +67,7 @@ if __name__ == '__main__':
     format_data: list = []
     for d in data:
         format_data.append(format_numbers(d))
-    # Join to a string
+    # Join list to use list comprehension
     format_list: list = [','.join(fd) for fd in format_data]
     for fl in format_list:
         print(fl)
