@@ -33,16 +33,13 @@ def add_course(student_id: str, course_name: str, course_score: str) -> str:
     """
 
     get_student_info(student_id)
-    if course_name == "" or course_score == "":
-        raise ValueError("=>其它例外: 課程名稱或分數不可空白.")
-    else:
-        with open(JSONFILE, 'r', encoding='utf-8') as f:
-            data_dict: dict = json.load(f)
-            for d in data_dict:
-                if d['student_id'] == student_id:
-                    d['courses'].append({'name': course_name, 'score': float(course_score)})
-        with open(JSONFILE, 'w', encoding='utf-8') as f:
-            json.dump(data_dict, f, ensure_ascii=False, indent=4)
+    with open(JSONFILE, 'r', encoding='utf-8') as f:
+        data_dict: dict = json.load(f)
+        for d in data_dict:
+            if d['student_id'] == student_id:
+                d['courses'].append({'name': course_name, 'score': float(course_score)})
+    with open(JSONFILE, 'w', encoding='utf-8') as f:
+        json.dump(data_dict, f, ensure_ascii=False, indent=4)
 
     return "=>課程已成功新增。"
 
@@ -104,11 +101,14 @@ if __name__ == '__main__':
                     sid: str = input("請輸入學號: ")
                     cname: str = input("請輸入要新增課程的名稱: ")
                     cscore: str = input("請輸入要新增課程的分數: ")
+                    assert cname != "" and cscore != "", "=>其它例外: 課程名稱或分數不可空白."
                     print(add_course(sid, cname, cscore), end="")
                 else:
                     print("檔案：students.json不存在", end="")
             except ValueError as ve:
                 print(ve, end="")
+            except AssertionError as ae:
+                print(ae, end="")
             continue
         elif choice == '3':
             try:
