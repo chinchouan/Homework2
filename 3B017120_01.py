@@ -1,6 +1,7 @@
 def get_even_squares(num_list: list) -> list:
     """
-    This function takes a list of numbers and returns a list of even numbers square.
+    This function takes a list of numbers and
+    returns a list of even numbers square.
         :param num_list: list of numbers
         :return result: list of even numbers square
     """
@@ -14,7 +15,8 @@ def get_even_squares(num_list: list) -> list:
 
 def get_odd_cubes(num_list: list) -> list:
     """
-    This function takes a list of numbers and returns a list of odd numbers cubes.
+    This function takes a list of numbers and
+    returns a list of odd numbers cubes.
         :param num_list: list of numbers
         :return: list of odd numbers cubes
     """
