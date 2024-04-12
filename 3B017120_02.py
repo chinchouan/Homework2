@@ -40,9 +40,7 @@ def add_course(student_id: str, course_name: str, course_score: str) -> str:
             data_dict: dict = json.load(f)
             for d in data_dict:
                 if d['student_id'] == student_id:
-                    d['courses'].append(
-                        {'name': course_name, 'score': float(course_score)}
-                    )
+                    d['courses'].append({'name': course_name, 'score': float(course_score)})
         with open(JSONFILE, 'w', encoding='utf-8') as f:
             json.dump(data_dict, f, ensure_ascii=False, indent=4)
 
@@ -93,9 +91,7 @@ if __name__ == '__main__':
                     # get student data and format it
                     sid: str = input("請輸入學號: ")
                     datas: dict = get_student_info(sid)
-                    format_datas: str = json.dumps(
-                        datas, indent=4, ensure_ascii=False
-                    )
+                    format_datas: str = json.dumps(datas, indent=4, ensure_ascii=False)
                     print(f"=>學生資料: {format_datas}", end="")
                 else:
                     print("檔案：students.json不存在")
@@ -131,5 +127,5 @@ if __name__ == '__main__':
             print("=>程式結束。", end="")
             continue
         else:
-            print("請選擇1.到4.，輸入如:1。", end="")
+            print("=>請輸入有效的選項。", end="")
             continue
