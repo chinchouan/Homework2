@@ -52,6 +52,7 @@ def format_numbers(numbers: list) -> list:
 
 
 # main programming
+# (Use this block to avoid being called when being considered a module)
 if __name__ == '__main__':
     num_list: list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     # List of data

@@ -2,15 +2,15 @@ import json
 import os
 
 
-def get_student_info(data, student_id) -> dict:
+def get_student_info(student_id) -> dict:
     """
-    This function takes a dict of student info and returns a dict
-    of student id info
-    :param data: dict of student info
+    This function takes a student id and returns a dictionary
+    of the student information
     :param student_id: student id
-    :return: dict of student id info
+    :return: a dictionary of the student information
     """
-    with open(data, 'r', encoding='utf-8') as f:
+
+    with open(JSONFILE, 'r', encoding='utf-8') as f:
         data_dict = json.load(f)
         found_id = False
         for d in data_dict:
@@ -24,14 +24,15 @@ def get_student_info(data, student_id) -> dict:
 
 def add_course(student_id, course_name, course_score) -> str:
     """
-    This function takes a dict of student info and add new data
-    to dict of student's course info
+    This function takes dictionary of the student information
+    and add new data to dict of student's course information
     :param student_id: student id
     :param course_name: course name
     :param course_score: course score
-    :return: add result success or fail
+    :return: add result success or fail(error)
     """
-    get_student_info(JSONFILE, student_id)
+
+    get_student_info(student_id)
     if course_name == "" or course_score == "":
         raise ValueError("=>其它例外: 課程名稱或分數不可空白.")
     else:
@@ -50,10 +51,12 @@ def add_course(student_id, course_name, course_score) -> str:
 
 def calculate_average_score(student_data):
     """
-    This function takes a dict of student info and calculate average score
-    :param student_data:
+    This function takes a dictionary of student information
+    and calculate average score
+    :param student_data: student information
     :return: average score
     """
+
     total_courses = 0
     total_score = 0
     for c in student_data['courses']:
@@ -65,6 +68,7 @@ def calculate_average_score(student_data):
         return total_score / total_courses
 
 
+# menu declare
 menu = """
 ***************選單***************
 1. 查詢指定學號成績
@@ -72,8 +76,12 @@ menu = """
 3. 顯示指定學號的各科平均分數
 4. 離開
 **********************************"""
+# main programming
+# (Use this block to avoid being called when being considered a module)
 if __name__ == '__main__':
+    # Constant to the json path
     JSONFILE = "./students.json"
+    # Active the menu program
     active = True
     while active:
         print(menu)
@@ -82,39 +90,46 @@ if __name__ == '__main__':
         if choice == '1':
             try:
                 if data_exists:
+                    # get student data and format it
                     sid = input("請輸入學號: ")
-                    datas = get_student_info(JSONFILE, sid)
+                    datas = get_student_info(sid)
                     format_datas = json.dumps(
                         datas, indent=4, ensure_ascii=False
                     )
-                    print(f"=>學生資料: {format_datas}")
+                    print(f"=>學生資料: {format_datas}", end="")
                 else:
                     print("檔案：students.json不存在")
             except ValueError as ve:
-                print(ve)
+                print(ve, end="")
+            continue
         elif choice == '2':
             try:
                 if data_exists:
                     sid = input("請輸入學號: ")
                     cname = input("請輸入要新增課程的名稱: ")
                     cscore = input("請輸入要新增課程的分數: ")
-                    print(add_course(sid, cname, cscore))
+                    print(add_course(sid, cname, cscore), end="")
                 else:
-                    print("檔案：students.json不存在")
+                    print("檔案：students.json不存在", end="")
             except ValueError as ve:
-                print(ve)
+                print(ve, end="")
+            continue
         elif choice == '3':
             try:
+                # get student data
                 sid = input("請輸入學號: ")
-                this_student_info = get_student_info(JSONFILE, sid)
+                the_student_info = get_student_info(sid)
                 msg = "=>各科平均分數: "
-                msg = msg + f"{calculate_average_score(this_student_info):.2f}"
-                print(msg)
+                # calculate the student's score average
+                msg = msg + f"{calculate_average_score(the_student_info):.2f}"
+                print(msg, end="")
             except ValueError as ve:
-                print(ve)
+                print(ve, end="")
+            continue
         elif choice == '4':
             active = False
-            print("=>程式結束。")
+            print("=>程式結束。", end="")
             continue
         else:
-            print("請選擇1.到4.，輸入如:1。")
+            print("請選擇1.到4.，輸入如:1。", end="")
+            continue
