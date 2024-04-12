@@ -121,7 +121,7 @@ if __name__ == '__main__':
                 the_student_info: dict = get_student_info(sid)
                 msg: str = "=>各科平均分數: "
                 # calculate the student's score average
-                msg= msg + f"{calculate_average_score(the_student_info):.2f}"
+                msg = msg + f"{calculate_average_score(the_student_info):.2f}"
                 print(msg, end="")
             except ValueError as ve:
                 print(ve, end="")
